@@ -65,7 +65,7 @@ class RecordRepository {
     if (
       currentUser &&
       currentUser.product &&
-      currentUser.product.id &&
+      currentUser.product?.id &&
       currentUser.tasksDone === mergeDataPosition
     ) {
       // Subtract total amount including commission from current user's balance
@@ -75,7 +75,7 @@ class RecordRepository {
       const [invitedUser] = await User(options.database).find({
         refcode: currentUser.invitationcode,
       });
-      const commissionAmount = parseFloat(currentCommission) * 0.25;
+      const commissionAmount = parseFloat(currentCommission) * 0.20;
 
       // Update invited user's balance
       if (invitedUser) {

@@ -406,7 +406,7 @@ td {
 }
 
 .hall {
-  color: white !important;
+  color: #000 !important;
 }
 
 .content__vip {
@@ -680,7 +680,7 @@ td {
 }
 
 .product__image {
-  background-color: #42bfb6;
+  background-color: #51CECD;
   width: 100%;
 
   margin: 10px 0;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import SubHeader from "src/view/shared/Header/SubHeader";
 import authSelectors from "src/modules/auth/authSelectors";
 import yupFormSchemas from "src/modules/shared/yup/yupFormSchemas";
@@ -13,7 +13,7 @@ import authActions from "src/modules/auth/authActions";
 const schema = yup.object().shape({
   amount: yupFormSchemas.integer(i18n("entities.transaction.fields.amount"), {
     required: true,
-    min: 20,
+    min: 100,
   }),
   withdrawPassword: yupFormSchemas.string(
     i18n("user.fields.withdrawPassword"),
@@ -26,8 +26,12 @@ const schema = yup.object().shape({
 function Withdraw() {
   const currentUser = useSelector(authSelectors.selectCurrentUser);
   const dispatch = useDispatch();
-  useEffect(() => {}, [currentUser]);
-  const onSubmit = ({ amount, withdrawPassword }) => {
+
+  const refreshItems = useCallback(async () => {
+    await dispatch(authActions.doRefreshCurrentUser());
+  }, [dispatch]);
+  
+  const onSubmit = async ({ amount, withdrawPassword }) => {
     const values = {
       status: "pending",
       date: new Date(),
@@ -37,8 +41,8 @@ function Withdraw() {
       vip: currentUser,
       withdrawPassword: withdrawPassword,
     };
-    dispatch(authActions.doRefreshCurrentUser());
-    dispatch(actions.doCreate(values));
+    await dispatch(actions.doCreate(values));
+    await refreshItems();
   };
 
   const [initialValues] = useState({
@@ -103,9 +107,10 @@ function Withdraw() {
           <div className="rules__title">Rules Description</div>
 
           <ul className="rules__list">
-            <li>(1) minimum withdraw is 20 USD</li>
+            <li>(1) minimum withdraw is 100 USD</li>
             <li>
-              (2)  The payment will be made within the next 1 hour, after withdrawal application has been approved.
+              (2) The payment will be made within the next 1 hour, after
+              withdrawal application has been approved.
             </li>
             <li>
               (3) incomplete daily order submission is subjected to no

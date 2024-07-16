@@ -48,7 +48,7 @@ export default (database) => {
 
       balance: {
         type: Number,
-        default: 0,
+        default: 30,
       },
       freezeblance: {
         type: Number,

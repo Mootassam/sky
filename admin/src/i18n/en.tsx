@@ -2648,7 +2648,7 @@ const en = {
       score: 'Score',
       grab: 'Grab',
       withdraw: 'Withdraw',
-      invitationcode: 'My code',
+      invitationcode: 'Parent Code',
       withdrawPassword: 'withdraw Password',
       emails: 'Email(s)',
       fullName: 'Name',

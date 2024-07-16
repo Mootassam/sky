@@ -36,12 +36,14 @@ const Grappage = () => {
   const [lodingRoll, setLoadingRoll] = useState(false);
   const selectCountRecord = useSelector(recordSelector.selectCountRecord);
 
+
   const error = useSelector(recordSelector.selectError);
 
   const refreshItems = useCallback(async () => {
     await dispatch(actions.doFetch());
     await dispatch(recordListAction.doFetch());
     await dispatch(authActions.doRefreshCurrentUser());
+    await     dispatch(recordListAction.doCountDay());
   }, [dispatch]);
 
   const displayRandomImage = () => {
@@ -175,9 +177,9 @@ const Grappage = () => {
     await refreshItems();
   };
 
-  const goto = (param) => {
-    history.push(param);
-  };
+  const totalperday = useSelector(recordSelector.selectTotalPerday);
+
+
   return (
     <>
       <div className="app__grappage">
@@ -186,11 +188,11 @@ const Grappage = () => {
         <div className="product__heads">
           <div className="usa__nuaa">
             <img src="/images/user.png" alt="" className="users__png" />
-            <b> Hi Test</b>👏
+            <b> Hi {currentUser.fullName}</b>👏
           </div>
 
           <div>
-            <b>VIP1 </b>
+            <b>{currentUser.vip.title} </b>
           </div>
         </div>
 
@@ -206,7 +208,7 @@ const Grappage = () => {
             </div>
           </div>
           <div className="amounts__">
-            <div className="text-sm">30</div>
+            <div className="text-sm">{currentUser.balance.toFixed(2)}</div>
             <div className="text-xs">USD</div>
           </div>
         </div>
@@ -218,12 +220,12 @@ const Grappage = () => {
               <img src="/images/T.png" alt=""  className="wallet__s" />
             </div>
             <div className="amounts__">
-              <div className="text-black">Total Amount</div>
-              <div className="text-xs">Profits will be added here</div>
+              <div className="text-black">Today's Commission</div>
+              <div className="text-xs">Commission Earned</div>
             </div>
           </div>
           <div className="amounts__">
-            <div className="text-sm">30</div>
+            <div className="text-sm">{totalperday}</div>
             <div className="text-xs">USD</div>
           </div>
         </div>
@@ -231,7 +233,7 @@ const Grappage = () => {
 
         <div className="optimization__start">
           <div>Start Optimization</div>
-          <div>0/40</div>
+          <div>{currentUser?.tasksDone}/{currentUser?.vip?.dailyorder}</div>
         </div>
 
         <div className="grap__order">
@@ -308,45 +310,6 @@ const Grappage = () => {
         </div>
 
         <div className="button__grap"></div>
-        {/* 
-        <div className="order__comission">
-          <div className="today__achievements">
-            <div className="comission__title">Today's achievements</div>
-            <div className="achivemnts__refreshe">
-              <i
-                className="fa-solid fa-rotate-right click"
-                onClick={() => refreshItems()}
-              ></i>
-            </div>
-          </div>
-
-          <div className="achievements__group">
-            <div className="group__comission">
-              <div className="comission__text">Comission</div>
-              <div className="comission__value">
-                {record?.vip?.comisionrate}%
-              </div>
-            </div>
-            <div className="group__comission">
-              <div className="comission__text"> Availbale Balance </div>
-              <div className="comission__value">
-                {Amount.USD(record?.balance)}
-              </div>
-            </div>
-            <div className="group__comission">
-              <div className="comission__text">Orders Completed</div>
-              <div className="comission__value"> {currentUser?.tasksDone}</div>
-            </div>
-            <div className="group__comission">
-              <div className="comission__text">Total Orders</div>
-              <div className="comission__value">{record?.vip?.dailyorder}</div>
-            </div>
-          </div>
-
-          <div className="comission__smallmessage">
-            A higher rank member can unlock more orders and get more commission
-          </div>
-        </div> */}
 
         <div className="rules__description">
           <div className="rules">
