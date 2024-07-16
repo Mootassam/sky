@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import selectors from 'src/modules/vip/list/vipListSelectors';
+import styled from "styled-components";
 import Vipactions from "src/modules/vip/list/vipListActions";
 import selector from "src/modules/vip/list/vipListSelectors";
 import LoadingModal from "src/shared/LoadingModal";
@@ -13,6 +12,17 @@ import listactions from "src/modules/company/list/companyListActions";
 import selectors from "src/modules/company/list/companyListSelectors";
 
 function Market() {
+
+  const MarketContainer = styled.div`
+      top: 0;
+    background-color: rgb(0, 0, 29, 1);
+    with: 100dvw;
+    width: 100%;
+    height: 100dvh;
+    position: absolute;
+    left: 0;
+`;
+
   const dispatch = useDispatch();
   const record = useSelector(selector.selectRows);
   const logorecord = useSelector(selectors.selectRows);
@@ -113,6 +123,7 @@ function Market() {
   useEffect(() => {});
 
   return (
+    <MarketContainer>
     <div
       style={{
         display: "flex",
@@ -145,7 +156,7 @@ function Market() {
           <div className="welcome">
             {" "}
             <img src="/images/user.png" alt="" className="user__png" />{" "}
-            <b> Hi, Test </b> Welcome Back 👏{" "}
+            <b> Hi, {currentUser.fullName} </b> Welcome Back 👏{" "}
           </div>
           <div>
             <Link to="/profile">
@@ -344,7 +355,9 @@ function Market() {
         </div>
       )} */}
     </div>
+    </MarketContainer>
   );
+
 }
 
 export default Market;

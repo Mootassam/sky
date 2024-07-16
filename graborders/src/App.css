@@ -1140,6 +1140,7 @@ img {
   padding-left: 2%;
   padding-right: 2%;
   max-width: 500px;
+  margin: auto;
   /* margin: auto; */
 }
 
