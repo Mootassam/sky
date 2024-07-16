@@ -32,6 +32,7 @@ function Profile() {
   const doSignout = () => {
     dispatch(authActions.doSignout());
   };
+  
   const history = useHistory();
 
   const goto = (param) => {
@@ -91,7 +92,6 @@ function Profile() {
 
   return (
     <div className="app__profile">
-      <div className="market__header"></div>
       <div className="profiles__header">
         <div className="header__background"></div>
         <div className="carde__profile">
@@ -189,7 +189,7 @@ function Profile() {
                 <i className="fa fa-arrow-right " />
               </div>
             </div>
-            <div className="line__section" onClick={() => setDeposit(true)}>
+            <div className="line__section" onClick={() => goto("/withdraw")}>
               <div className="titre__section">
                 <i className="fa-solid fa-money-check" />
                 <span>Withdraw</span>

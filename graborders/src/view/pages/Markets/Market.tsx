@@ -12,16 +12,15 @@ import listactions from "src/modules/company/list/companyListActions";
 import selectors from "src/modules/company/list/companyListSelectors";
 
 function Market() {
-
   const MarketContainer = styled.div`
-      top: 0;
+    top: 0;
     background-color: rgb(0, 0, 29, 1);
     with: 100dvw;
     width: 100%;
     height: 100dvh;
     position: absolute;
     left: 0;
-`;
+  `;
 
   const dispatch = useDispatch();
   const record = useSelector(selector.selectRows);
@@ -78,6 +77,11 @@ function Market() {
       link: "/Online",
     },
     {
+      icon: "fa-solid fa-calendar",
+      text: "Events",
+      link: "/events",
+    },
+    {
       icon: "fa-regular fa-building",
       text: "About",
       link: "/company",
@@ -97,7 +101,6 @@ function Market() {
       text: "FAQs",
       link: "/faqs",
     },
-   
   ];
 
   const submit = (item) => {
@@ -124,203 +127,193 @@ function Market() {
 
   return (
     <MarketContainer>
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <div className="market__header">
-        {!loadingImage &&
-          logorecord.map((item) => (
-            <img
-              src={item?.photo[0]?.downloadUrl}
-              alt=""
-              className="logo__header"
-            />
-          ))}
-      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <div className="advertise__header">
+          <video
+            className="w-full h-full"
+            autoPlay
+            loop
+            playsInline
+            style={{ zIndex: 1, width: "100%" }}
+          >
+            <source src="/video/gtb2.mp4" type="video/mp4" />
+          </video>
 
-      <div className="advertise__header">
-        <video
-          className="w-full h-full"
-          autoPlay
-          loop
-          playsInline
-          style={{ zIndex: 1, width: "100%" }}
-        >
-          <source src="/video/gtb2.mp4" type="video/mp4" />
-        </video>
-
-        <div className="advertise__profile">
-          <div className="welcome">
-            {" "}
-            <img src="/images/user.png" alt="" className="user__png" />{" "}
-            <b> Hi, {currentUser.fullName} </b> Welcome Back 👏{" "}
+          <div className="advertise__profile">
+            <div className="welcome">
+              {" "}
+              <img src="/images/user.png" alt="" className="user__png" />{" "}
+              <b> Hi, {currentUser.fullName} </b> Welcome Back 👏{" "}
+            </div>
+            <div>
+              <Link to="/profile">
+                <img src="/images/circle.png" alt="" className="user__png" />
+              </Link>
+            </div>
           </div>
-          <div>
-            <Link to="/profile">
-              <img src="/images/circle.png" alt="" className="user__png" />
+        </div>
+        <div className="home__section">
+          <div className="advertise__speaker">
+            <div>
+              <i className="fa-solid fa-volume-off speaker"></i>
+            </div>
+
+            <div className="marquee">
+              <span>
+                Dear users, due to the global maintenance of the gtb platform,
+                it will be available as normal at 16:00 pm Eastern Time on June
+                25th.
+              </span>
+            </div>
+            <NewsTicker text="" />
+          </div>
+
+          <div className="advertise__buttons">
+            <Link
+              to="/online"
+              className="button__deposit"
+              style={{ textDecoration: "none" }}
+            >
+              <div>Deposit</div>
+            </Link>
+            <Link
+              to="/withdraw"
+              className="button__withdraw"
+              style={{ textDecoration: "none" }}
+            >
+              Withdraw
             </Link>
           </div>
-        </div>
-      </div>
-      <div className="home__section">
-        <div className="advertise__speaker">
-          <div>
-            <i className="fa-solid fa-volume-off speaker"></i>
-          </div>
-
-          <div className="marquee">
-            <span>
-              Dear users, welcome to gtb Marketing. The daily working hours are
-              from 11:00 AM - 11:00 PM (EST). If you keep working for 2 days,
-              you will be paid $100, if you keep working for 4 days, you will be
-              paid $400, if you keep working for 7 days, you will be paid
-              $1,000, if you keep working for 2 weeks, you will be paid $2,500,
-              if you keep working for 30 days, you will be paid $5,000.
-            </span>
-          </div>
-          <NewsTicker text="" />
-        </div>
-
-        <div className="advertise__buttons">
-          <Link
-            to="/online"
-            className="button__deposit"
-            style={{ textDecoration: "none" }}
-          >
-            <div>Deposit</div>
-          </Link>
-          <Link
-            to="/withdraw"
-            className="button__withdraw"
-            style={{ textDecoration: "none" }}
-          >
-            Withdraw
-          </Link>
-        </div>
-        <div className="adverstise__actions">
-          {button__action.map((item) => (
-            <Link to={item.link} className="remove__ligne">
-              <div className="button__action">
-                <div className="action__cirlce">
-                  <i className={`${item.icon} icon__action`}></i>
+          <div className="adverstise__actions">
+            {button__action.map((item) => (
+              <Link to={item.link} className="remove__ligne">
+                <div className="button__action">
+                  <div className="action__cirlce">
+                    <i className={`${item.icon} icon__action`}></i>
+                  </div>
+                  <label htmlFor="" className="action__label">
+                    {item.text}
+                  </label>
                 </div>
-                <label htmlFor="" className="action__label">
-                  {item.text}
-                </label>
-              </div>
-            </Link>
-          ))}
-        </div>
+              </Link>
+            ))}
+          </div>
 
-        <div className="advertise__content">
-          <div className="content__header">
-            <h3 className="hall">Employee level</h3>
-            {loading && <LoadingModal />}
-            {!loading && record && (
-              <div className="content__vip">
-                {record?.map((item, index) => (
-                  <div
-                    className="vip"
-                    onClick={() => showModal(item)}
-                    key={index}
-                  >
-                    {currentUser?.vip?.id === item.id ? (
-                      <div className="success__vip"></div>
-                    ) : (
-                      <div className="subscribe__"></div>
-                    )}
-                    <div className="vip__image">
-                      <img
-                        src={item?.photo[0]?.downloadUrl}
-                        alt="Vip__image"
-                        className="vip__level"
-                      />
-                    </div>
-                    <div className="vip__text">
-                      <div className="vip__title">{item?.title}</div>
-                      <div className="vip__price">USD {item?.levellimit}</div>
-                      <div className="vip__details">
-                        <div>
-                          <strong>● </strong>
-                          {item.comisionrate}% commission per data
-                        </div>
-                        <div>
-                          <strong>● </strong>
-                          {item.commissionmergedata}% commission for merge data
-                        </div>
-                        <div>
-                          <strong>● </strong>
-                          Limited to {item.tasksperday} data per set,{" "}
-                          {item?.setperday} sets of data everyday
-                        </div>
-                        {item?.withdrawlimit && (
+          <div className="advertise__content">
+            <div className="content__header">
+              <h3 className="hall">Employee level</h3>
+              {loading && <LoadingModal />}
+              {!loading && record && (
+                <div className="content__vip">
+                  {record?.map((item, index) => (
+                    <div
+                      className="vip"
+                      onClick={() => showModal(item)}
+                      key={index}
+                    >
+                      {currentUser?.vip?.id === item.id ? (
+                        <div className="success__vip"></div>
+                      ) : (
+                        <div className="subscribe__"></div>
+                      )}
+                      <div className="vip__image">
+                        <img
+                          src={item?.photo[0]?.downloadUrl}
+                          alt="Vip__image"
+                          className="vip__level"
+                        />
+                      </div>
+                      <div className="vip__text">
+                        <div className="vip__title">{item?.title}</div>
+                        <div className="vip__price">USD {item?.levellimit}</div>
+                        <div className="vip__details">
                           <div>
                             <strong>● </strong>
-                            Withdrawal limit: {item?.withdrawlimit} USD
+                            {item.comisionrate}% commission per data
                           </div>
-                        )}
-                        <div>
-                          <strong>● </strong>
-                          {item?.withdrawperday} times of withdrawal
-                        </div>
-                        <div>
-                          <strong>● </strong>
-                          {item?.handlingfee}% handling fee
+                          <div>
+                            <strong>● </strong>
+                            {item.commissionmergedata}% commission for merge
+                            data
+                          </div>
+                          <div>
+                            <strong>● </strong>
+                            Limited to {item.tasksperday} data per set,{" "}
+                            {item?.setperday} sets of data everyday
+                          </div>
+                          {item?.withdrawlimit && (
+                            <div>
+                              <strong>● </strong>
+                              Withdrawal limit: {item?.withdrawlimit} USD
+                            </div>
+                          )}
+                          <div>
+                            <strong>● </strong>
+                            {item?.withdrawperday} times of withdrawal
+                          </div>
+                          <div>
+                            <strong>● </strong>
+                            {item?.handlingfee}% handling fee
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            )}
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="content__footer"></div>
           </div>
-
-          <div className="content__footer"></div>
         </div>
-      </div>
-      {selectedItem && Modal && (
-        <div className="modal__grap">
-          <div className="modal__product">
-            <div className="single__product">
-              <div className="single__header">{selectedItem?.title}</div>
+        {selectedItem && Modal && (
+          <div className="modal__grap">
+            <div className="modal__product">
+              <div className="single__product">
+                <div className="single__header">{selectedItem?.title}</div>
 
-              <div className="order__time">
-                <div style={{ fontSize: 20 }}>
-                  Level Limit: {selectedItem?.levellimit}
-                </div>
-                <div style={{ fontSize: 20 }}>
-                  Data per set: {selectedItem?.dailyorder}
-                </div>
-                <div style={{ fontSize: 20 }}>
-                  Commission Rate: {selectedItem?.comisionrate}%
-                </div>
-              </div>
-              <div className="badge__ pending">
-                <label>Pending</label>
-              </div>
-
-              <div className="bottom__submit">
-                <div className="submit__ligne"></div>
-                <div className="sumbit__buttons">
-                  <div className="cancel__product" onClick={() => hideModal()}>
-                    Cancel
+                <div className="order__time">
+                  <div style={{ fontSize: 20 }}>
+                    Level Limit: {selectedItem?.levellimit}
                   </div>
-                  <div
-                    className="submit__product"
-                    onClick={() => submit(selectedItem)}
-                  >
-                    Upgrage
+                  <div style={{ fontSize: 20 }}>
+                    Data per set: {selectedItem?.dailyorder}
+                  </div>
+                  <div style={{ fontSize: 20 }}>
+                    Commission Rate: {selectedItem?.comisionrate}%
+                  </div>
+                </div>
+                <div className="badge__ pending">
+                  <label>Pending</label>
+                </div>
+
+                <div className="bottom__submit">
+                  <div className="submit__ligne"></div>
+                  <div className="sumbit__buttons">
+                    <div
+                      className="cancel__product"
+                      onClick={() => hideModal()}
+                    >
+                      Cancel
+                    </div>
+                    <div
+                      className="submit__product"
+                      onClick={() => submit(selectedItem)}
+                    >
+                      Upgrage
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-      {/* 
+        )}
+        {/* 
       {timemodal && (
         <div className="big__modal">
           <div className="modal__time">
@@ -354,10 +347,9 @@ function Market() {
           </div>
         </div>
       )} */}
-    </div>
+      </div>
     </MarketContainer>
   );
-
 }
 
 export default Market;

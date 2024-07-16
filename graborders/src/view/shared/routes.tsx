@@ -27,12 +27,7 @@ const privateRoutes = [
     exact: true,
   },
 
-  {
-    path: "/Online",
-    loader: () => import("src/view/pages/Online/Online"),
-    permissionRequired: permissions.categoryRead,
-    exact: true,
-  },
+  
   {
     path: "/profile",
     loader: () => import("src/view/pages/Auth/Profile"),
@@ -45,6 +40,12 @@ const screenRoutes = [
   {
     path: "/currency",
     loader: () => import("src/view/pages/Currency/CurrecnyPage"),
+    permissionRequired: permissions.categoryRead,
+  },
+
+  {
+    path: "/events",
+    loader: () => import("src/view/pages/Events/Events"),
     permissionRequired: permissions.categoryRead,
   },
   {
@@ -71,7 +72,12 @@ const screenRoutes = [
     permissionRequired: permissions.categoryRead,
     exact: true,
   },
-
+  {
+    path: "/Online",
+    loader: () => import("src/view/pages/Online/Online"),
+    permissionRequired: permissions.categoryRead,
+    exact: true,
+  },
   {
     path: "/Certificate",
     loader: () => import("src/view/pages/Certificate/Certificate"),

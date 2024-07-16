@@ -108,22 +108,7 @@ function Portfolio() {
           margin:'auto'
         }}
       >
-        <div className="header_order">
-          <div className="order__header">
-            <div className="order__record">Tasks Record</div>
-          </div>
-          <div className="order__background">
-            <div className="order__remaining">
-              <label htmlFor="" className="remaining__assets">
-                 Availalbe assets
-              </label>
-              <span className="remaining__amount">
-                {total}
-                <span style={{ fontSize: 19 }}>USD</span>{" "}
-              </span>
-            </div>
-          </div>
-        </div>
+     
         <div className="order__list">
           <div className="list__actions">
             <div

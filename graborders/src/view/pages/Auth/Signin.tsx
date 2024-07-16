@@ -48,7 +48,7 @@ function Signin() {
   return (
     <div className="auth__page">
       <div className="auth__header">
-        <img src="https://platform.cj.com/nav/static/logo.svg" alt=""  />
+        <img src="/images/logo.png" alt="" style={{width:200}}  />
         <div className="cj__grouptitle">
         <div className="auth__cj">Welcome</div>
         <span className="auth__description">

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import actions from "src/modules/category/list/categoryListActions";
 import selector from "src/modules/category/list/categoryListSelectors";
 import LoadingModal from "src/shared/LoadingModal";
+import SubHeader from "src/view/shared/Header/SubHeader";
 function Online() {
   const dispatch = useDispatch();
   const record = useSelector(selector.selectRows);
@@ -16,9 +17,7 @@ function Online() {
 
   return (
     <div>
-      <div className="online__service">
-        <h4>Customer Service</h4>
-      </div>
+        <SubHeader title="Customer Service" path="/" />
 
       <div className="online__header">
         if you have any questions or encounter issues, please email us or chat

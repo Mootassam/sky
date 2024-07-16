@@ -13,6 +13,7 @@ import Image from "src/shared/Images";
 import { useHistory } from "react-router-dom";
 import authActions from "src/modules/auth/authActions";
 import Amount from "src/shared/Amount";
+import Header from "src/view/shared/Header";
 
 const Grappage = () => {
   const [randomImage, setRandomImage] = useState("");
@@ -160,7 +161,7 @@ const Grappage = () => {
   };
 
   const currentUser = useSelector(authSelectors.selectCurrentUser);
-  
+
   const submit = async () => {
     const values = {
       number: number,
@@ -168,7 +169,7 @@ const Grappage = () => {
       status: items?.combo ? "pending" : "completed",
       user: currentUser.id,
     };
-    
+
     await dispatch(recordActions.doCreate(values));
     setShowModal(false);
     await refreshItems();
@@ -177,12 +178,61 @@ const Grappage = () => {
   const goto = (param) => {
     history.push(param);
   };
-
-  
   return (
     <>
       <div className="app__grappage">
-        <div className="online__service">{/* <h4>Grap</h4> */}</div>
+
+        {/* <Header />  */}
+        <div className="product__heads">
+          <div className="usa__nuaa">
+            <img src="/images/user.png" alt="" className="users__png" />
+            <b> Hi Test</b>👏
+          </div>
+
+          <div>
+            <b>VIP1 </b>
+          </div>
+        </div>
+
+        <div className="amounts__group">
+        <div className="totals__amount">
+          <div className="amount__w">
+            <div> 
+              <img src="/images/wallet.png" alt=""  className="wallet__s" />
+            </div>
+            <div className="amounts__">
+              <div className="text-black">Total Amount</div>
+              <div className="text-xs">Profits will be added here</div>
+            </div>
+          </div>
+          <div className="amounts__">
+            <div className="text-sm">30</div>
+            <div className="text-xs">USD</div>
+          </div>
+        </div>
+
+
+        <div className="totals__amount">
+          <div className="amount__w">
+            <div> 
+              <img src="/images/T.png" alt=""  className="wallet__s" />
+            </div>
+            <div className="amounts__">
+              <div className="text-black">Total Amount</div>
+              <div className="text-xs">Profits will be added here</div>
+            </div>
+          </div>
+          <div className="amounts__">
+            <div className="text-sm">30</div>
+            <div className="text-xs">USD</div>
+          </div>
+        </div>
+        </div>
+
+        <div className="optimization__start">
+          <div>Start Optimization</div>
+          <div>0/40</div>
+        </div>
 
         <div className="grap__order">
           <div className="order__top">
@@ -258,7 +308,7 @@ const Grappage = () => {
         </div>
 
         <div className="button__grap"></div>
-{/* 
+        {/* 
         <div className="order__comission">
           <div className="today__achievements">
             <div className="comission__title">Today's achievements</div>
@@ -299,13 +349,13 @@ const Grappage = () => {
         </div> */}
 
         <div className="rules__description">
-          <div className="rules"> <b>Notice:</b> </div>
+          <div className="rules">
+            {" "}
+            <b>Notice:</b>{" "}
+          </div>
           <ul className="rules__list">
-            <li>
-            Online Support Hours 10:00 - 22:00
-            </li>
+            <li>Online Support Hours 10:00 - 22:00</li>
             <li>Please contact online support for your assistance! </li>
-         
           </ul>
         </div>
 
@@ -325,9 +375,9 @@ const Grappage = () => {
                 </div>
                 <div className="product__image">
                   <div className="image__">
-                  {items?.photo && items?.photo[0]?.downloadUrl && ( 
-                    <img src={items?.photo[0]?.downloadUrl} alt="" />
-                  )}
+                    {items?.photo && items?.photo[0]?.downloadUrl && (
+                      <img src={items?.photo[0]?.downloadUrl} alt="" />
+                    )}
                   </div>
 
                   <div className="product__detail">
