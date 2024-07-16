@@ -43,7 +43,7 @@ const Grappage = () => {
     await dispatch(actions.doFetch());
     await dispatch(recordListAction.doFetch());
     await dispatch(authActions.doRefreshCurrentUser());
-    await     dispatch(recordListAction.doCountDay());
+    await  dispatch(recordListAction.doCountDay());
   }, [dispatch]);
 
   const displayRandomImage = () => {
@@ -154,6 +154,8 @@ const Grappage = () => {
 
   useEffect(() => {
     dispatch(recordListAction.doCount());
+      dispatch(recordListAction.doCountDay());
+
     displayRandomImage();
   }, [dispatch]);
 
