@@ -389,9 +389,16 @@ td {
   justify-content: space-between;
   gap: 10px;
   border-radius: 10px;
-  overflow-x: scroll;
+  overflow-x: auto;
+  white-space: nowrap;
 
 }
+
+.advertise__actions::-webkit-scrollbar {
+  height: 8px; /* Adjust scrollbar height as needed */
+}
+
+
 
 .button__action {
   background-color: #ed145b;
@@ -407,6 +414,10 @@ td {
 
 .hall {
   color: #000 !important;
+}
+
+.halls{ 
+  color: white;
 }
 
 .content__vip {

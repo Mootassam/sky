@@ -10,6 +10,7 @@ import authSelectors from "src/modules/auth/authSelectors";
 import actions from "src/modules/auth/authActions";
 import listactions from "src/modules/company/list/companyListActions";
 import selectors from "src/modules/company/list/companyListSelectors";
+import { ReactSmartScroller } from 'react-smart-scroller'
 
 function Market() {
   const MarketContainer = styled.div`
@@ -17,7 +18,7 @@ function Market() {
     background-color: rgb(0, 0, 29, 1);
     with: 100dvw;
     width: 100%;
-    height: 100dvh;
+    height: auto;
     position: absolute;
     left: 0;
   `;
@@ -165,9 +166,7 @@ function Market() {
 
             <div className="marquee">
               <span>
-                Dear users, due to the global maintenance of the gtb platform,
-                it will be available as normal at 16:00 pm Eastern Time on June
-                25th.
+              Dear users,the GTB platform is back to the best and normal,continue to earn as much as you can from the platform
               </span>
             </div>
             <NewsTicker text="" />
@@ -206,7 +205,7 @@ function Market() {
 
           <div className="advertise__content">
             <div className="content__header">
-              <h3 className="hall">Employee level</h3>
+              <h3 className="halls">Employee level</h3>
               {loading && <LoadingModal />}
               {!loading && record && (
                 <div className="content__vip">
@@ -246,12 +245,6 @@ function Market() {
                             Limited to {item.tasksperday} data per set,{" "}
                             {item?.setperday} sets of data everyday
                           </div>
-                          {item?.withdrawlimit && (
-                            <div>
-                              <strong>● </strong>
-                              Withdrawal limit: {item?.withdrawlimit} USD
-                            </div>
-                          )}
                           <div>
                             <strong>● </strong>
                             {item?.withdrawperday} times of withdrawal

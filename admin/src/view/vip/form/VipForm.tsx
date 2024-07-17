@@ -96,7 +96,7 @@ function VipForm(props) {
       handlingfee: record.handlingfee,
       setperday: record.setperday,
       withdrawperday: record.withdrawperday,
-      withdrawlimit: record.withdrawlimit,
+      // withdrawlimit: record.withdrawlimit,
     };
   });
 
@@ -180,8 +180,7 @@ function VipForm(props) {
                 required={true}
               />
             </div>
-
-
+{/* 
             <div className="col-lg-7 col-md-8 col-12">
               <InputFormItem
                 name="withdrawlimit"
@@ -191,6 +190,7 @@ function VipForm(props) {
                 required={true}
               />
             </div>
+*/}
 
             <div className="col-lg-7 col-md-8 col-12">
               <InputNumberFormItem
