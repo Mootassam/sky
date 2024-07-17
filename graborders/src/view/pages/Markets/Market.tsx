@@ -172,22 +172,7 @@ function Market() {
             <NewsTicker text="" />
           </div>
 
-          <div className="advertise__buttons">
-            <Link
-              to="/online"
-              className="button__deposit"
-              style={{ textDecoration: "none" }}
-            >
-              <div>Deposit</div>
-            </Link>
-            <Link
-              to="/withdraw"
-              className="button__withdraw"
-              style={{ textDecoration: "none" }}
-            >
-              Withdraw
-            </Link>
-          </div>
+   
           <div className="adverstise__actions">
             {button__action.map((item) => (
               <Link to={item.link} className="remove__ligne">
