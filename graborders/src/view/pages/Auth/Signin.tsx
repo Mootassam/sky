@@ -48,14 +48,17 @@ function Signin() {
   return (
     <div className="auth__page">
       <div className="auth__header">
-        <img src="/images/logo.png" alt="" style={{width:200}}  />
-        <div className="cj__grouptitle">
-        <div className="auth__cj">Welcome</div>
-        <span className="auth__description">
-        Login to your gtb Marketing account.
+        {/* <img src="/images/logo.png" alt="" style={{width:200}}  /> */}
+       
+      </div>    <div className="auth__header header__signup ">
+        <h1 className="auth__title"> Welcome</h1>
+        <span className="auth__description __v2">
+        Sign in to your marketing account
         </span>
-        </div>
       </div>
+
+
+
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="auth__form">

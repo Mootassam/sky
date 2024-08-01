@@ -88,8 +88,7 @@ function Signup() {
       <div className="auth__header header__signup ">
         <h1 className="auth__title"> Create Account</h1>
         <span className="auth__description __v2">
-        Create an account with gtb Marketing.
-        </span>
+        Sign up for a Marketing account.        </span>
       </div>
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>

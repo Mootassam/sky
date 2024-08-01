@@ -1970,7 +1970,7 @@ button:disabled {
 .auth__description {
   font-family: "Poppins", sans-serif;
   /* max-width: 225px; */
-  color: #fff;
+  color: #000;
   /* font-weight: 600; */
   text-align: center;
   font-size: 14px;
@@ -1985,7 +1985,7 @@ button:disabled {
   height: 100dvh;
   padding-bottom: 25px;
   overflow-y: scroll;
-  background-image: url("/images/Login.png");
+  /* background-image: url("/images/Login.png"); */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -2051,7 +2051,7 @@ button:disabled {
 
 .auth__link {
   font-size: 14px;
-  color: #fff;
+  color: #000;
   cursor: pointer;
 }
 .signup__link {

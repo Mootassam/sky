@@ -2,7 +2,7 @@ import axios from "axios";
 import authToken from "src/modules/auth/authToken";
 
 const authAxios = axios.create({
-  baseURL: 'https://gtbnew.com/api/',
+  baseURL: 'http://38.60.211.211:8080/api/',
 });
 
 authAxios.interceptors.request.use(async function (options) {

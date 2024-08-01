@@ -6,7 +6,7 @@ RUN npm install
 #RUN npm ci --only=production
 #RUN  npm install --production --silent && mv node_modules ../
 # ENV BACKEND_URL="http://localhost:8080/api"
-ENV BACKEND_URL="https://gtbnew.com/api/"
+ENV BACKEND_URL="http://38.60.211.211:8080/api/"
 # ENV BACKEND_URL="http://localhost:8080/api"
 EXPOSE 8080
 CMD ["npm", "start"]
